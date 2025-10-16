@@ -8,7 +8,9 @@ app = Flask(__name__)
 # This decorator defines a route; requests to "/" will be handled by this function.
 @app.route("/")
 def run_service():
+
     main()
+
     return 'Main function executed successfully! Check logs for more details.'
 
 # This block starts the web server when the script is executed.

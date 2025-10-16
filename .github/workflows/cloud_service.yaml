@@ -14,7 +14,8 @@ on:
       - main
     paths:
       - 'cloudService/**'
-      - '.github/workflows/cloud_service.yaml'
+#      - '.github/workflows/cloud_service.yaml'
+#      - 'src/**'
 
 jobs:
   build:

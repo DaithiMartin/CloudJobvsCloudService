@@ -13,8 +13,9 @@ on:
     branches:
       - main
     paths:
-      - './cloudJob/**'
-      - '.github/workflows/cloud_build.yaml'
+      - 'cloudJob/**'
+#      - '.github/workflows/cloud_build.yaml'
+#      - 'src/**'
 
 jobs:
   build:
