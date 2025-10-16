@@ -21,15 +21,15 @@ FROM python:3.12-slim
 # Copy the virtual environment from the builder stage.
 COPY --from=builder /venv /venv
 
-# Copy your application code
-COPY  cloudService/ /app/
-COPY src/ /src/
-
-# Set the working directory.
+# Set the working directory for the application.
 WORKDIR /app
 
-# Add the /src directory to Python's module search path.
-ENV PYTHONPATH /src
+# Copy your application and shared code INTO the working directory.
+# Python will automatically search for modules here.
+COPY cloudService/main.py .
+COPY src/ ./src/
+
+# No PYTHONPATH needed because 'src' is inside the WORKDIR.
 
 # Tell the container to listen on port 8080 for web traffic.
 EXPOSE 8080
