@@ -2,18 +2,11 @@
 # Use the official Python 3.12 image to get the correct Python version and build tools.
 FROM python:3.12 AS builder
 
-# Combine apt-get commands in a single layer and clean up to reduce image size.
-#RUN apt-get update && apt-get install -y --no-install-recommends \
-#    build-essential \
-#    gdal-bin \
-#    libgdal-dev \
-#    && rm -rf /var/lib/apt/lists/*
-
 # Create and own the virtual environment directory.
 RUN mkdir /venv && python3 -m venv /venv
 
 # Copy only the requirements file first to leverage Docker's layer cache.
-COPY /requirements.txt /requirements.txt
+COPY cloudService/requirements.txt /requirements.txt
 
 # Install Python dependencies into the virtual environment.
 # Use the full path to pip and --no-cache-dir to keep the layer small.
@@ -25,25 +18,21 @@ RUN /venv/bin/pip install --upgrade pip && \
 # Use the slim Python 3.12 image for a smaller final product.
 FROM python:3.12-slim
 
-## Install only the runtime dependencies for GDAL.
-#RUN apt-get update && apt-get install -y --no-install-recommends \
-#    gdal-bin \
-#    && rm -rf /var/lib/apt/lists/*
-
-# Copy the virtual environment from the builder stage and set correct ownership.
+# Copy the virtual environment from the builder stage.
 COPY --from=builder /venv /venv
 
-# Copy your application code and set correct ownership.
-COPY . .
+# Copy your application code
+COPY  cloudService/ /app/
+COPY src/ /src/
 
 # Set the working directory.
-#WORKDIR /cloudBuildTest
-WORKDIR /
+WORKDIR /app
+
+# Add the /src directory to Python's module search path.
+ENV PYTHONPATH /src
 
 # Tell the container to listen on port 8080 for web traffic.
 EXPOSE 8080
 
-# Run the web server using Gunicorn when the container launches.
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "main:app"]
-
-
+# Run the web server using the gunicorn executable from the virtual environment.
+CMD ["/venv/bin/gunicorn", "--bind", "0.0.0.0:8080", "main:app"]
