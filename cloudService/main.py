@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from src.run import main
+
 # Initialize a Flask app
 app = Flask(__name__)
 
