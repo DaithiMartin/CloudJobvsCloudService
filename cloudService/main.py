@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/")
 def run_service():
     main()
-    return 'Main function executed successfully!'
+    return 'Main function executed successfully! Check logs for more details.'
 
 # This block starts the web server when the script is executed.
 if __name__ == "__main__":
