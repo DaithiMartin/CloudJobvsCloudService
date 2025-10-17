@@ -1,0 +1,50 @@
+name: Deploy Cloud Function from Source
+
+# -----------------------------------------------------------------------------
+# Environment variables
+# -----------------------------------------------------------------------------
+env:
+  SERVICE_NAME: cloud-function
+  REGION: us-west1
+  PROJECT_ID: dulcet-equinox-444420-d8
+  RUNTIME_SA: 'mldeploy@dulcet-equinox-444420-d8.iam.gserviceaccount.com'
+  FUNCTIONS_DIR: ./cloudFunction
+  ENTRY_POINT: hello_world
+
+# -----------------------------------------------------------------------------
+# Workflow Triggers
+# -----------------------------------------------------------------------------
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'cloudFunction/**'
+      - '.github/workflows/cloud_function.yaml'
+      - 'src/**'
+
+# -----------------------------------------------------------------------------
+# Jobs
+# -----------------------------------------------------------------------------
+jobs:
+  deploy-from-source:
+    name: 🚀 Deploy Function from Source
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔐 Authenticate to Google Cloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: 🚀 Deploy to Cloud Functions
+        run: |
+          gcloud functions deploy ${{ env.SERVICE_NAME }} \
+            --source ./${{env.FUNCTIONS_DIR}} \
+            --function ${{ env.ENTRY_POINT }} \
+            --base-image python313 \
+            --region ${{ env.REGION }} \
+            --allow-unauthenticated
