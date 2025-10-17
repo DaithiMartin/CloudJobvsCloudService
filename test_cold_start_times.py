@@ -1,7 +1,7 @@
 import os
 import time
 import requests
-from google.cloud.run_v2 import JobsClient, ExecutionsClient
+from google.cloud.run_v2 import JobsClient
 from google.cloud import logging
 
 # --- Configuration ---
