@@ -20,5 +20,5 @@ COPY src/ ./src/
 # Tell the container to listen on port 8080 for web traffic.
 EXPOSE 8080
 
-# Run the 'cloudJob' module from the WORKDIR.
-ENTRYPOINT ["/venv/bin/python", "-m", "cloudJob"]
+## Run the 'cloudJob' module from the WORKDIR.
+#ENTRYPOINT ["/venv/bin/python", "-m", "cloudJob"]
