@@ -1,4 +1,4 @@
-name: CICD for Cloud Function from Source
+name: CICD for Cloud Function from Source with artifact registry
 
 # -----------------------------------------------------------------------------
 # Environment variables
