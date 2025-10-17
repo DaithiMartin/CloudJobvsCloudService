@@ -42,7 +42,7 @@ jobs:
 
       - name: 🚀 Deploy to Cloud Functions
         run: |
-          gcloud functions deploy ${{ env.SERVICE_NAME }} \
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
             --source ./${{env.FUNCTIONS_DIR}} \
             --function ${{ env.ENTRY_POINT }} \
             --base-image python313 \
