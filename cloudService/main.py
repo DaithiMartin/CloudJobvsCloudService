@@ -9,9 +9,9 @@ app = Flask(__name__)
 @app.route("/")
 def run_service():
 
-    main()
+    result = main()
 
-    return 'Main function executed successfully! Check logs for more details.'
+    return f'Main function executed successfully! Here is the tensor {result}'
 
 # This block starts the web server when the script is executed.
 if __name__ == "__main__":

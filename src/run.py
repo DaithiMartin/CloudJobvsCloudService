@@ -39,4 +39,5 @@ def main():
     print(f"Model produced output tensor with shape: {output.shape}")
     print(f"Output tensor:\n{output}")
     print("\n--- ML Model Execution Complete ---")
+    return output
 
