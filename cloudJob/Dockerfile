@@ -17,7 +17,8 @@ WORKDIR /app
 COPY cloudJob/cloudJob/ ./cloudJob/
 COPY src/ ./src/
 
-# No PYTHONPATH needed because 'src' is inside the WORKDIR.
+# Tell the container to listen on port 8080 for web traffic.
+EXPOSE 8080
 
 # Run the 'cloudJob' module from the WORKDIR.
 ENTRYPOINT ["/venv/bin/python", "-m", "cloudJob"]
