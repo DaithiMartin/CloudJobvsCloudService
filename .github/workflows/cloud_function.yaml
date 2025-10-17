@@ -1,4 +1,4 @@
-name: Deploy Cloud Function from Source
+name: CICD for Cloud Function from Source
 
 # -----------------------------------------------------------------------------
 # Environment variables
