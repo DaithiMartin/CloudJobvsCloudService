@@ -10,7 +10,6 @@ env:
   RUNTIME_SA: 'mldeploy@dulcet-equinox-444420-d8.iam.gserviceaccount.com'
   FUNCTIONS_DIR: ./cloudFunction
   ENTRY_POINT: hello_world
-  RUNTIME_SA: 'mldeploy@dulcet-equinox-444420-d8.iam.gserviceaccount.com'
 
 # -----------------------------------------------------------------------------
 # Workflow Triggers
