@@ -76,6 +76,7 @@ jobs:
             --quiet \
             --service-account "${{ env.RUNTIME_SA }}"
 
+
 #jobs:
 #  deploy-from-source:
 #    name: 🚀 Deploy Function from Source
