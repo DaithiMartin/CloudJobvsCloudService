@@ -14,7 +14,7 @@ RUN conda create -n $CONDA_ENV_NAME python=3.12 pip && \
 COPY requirements.txt requirements.txt
 
 # Set the shell to automatically activate our Conda environment.
-SHELL ["conda", "run", "-n", "$CONDA_ENV_NAME", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "cloud-function-env", "/bin/bash", "-c"]
 
 # Install any additional packages from requirements.txt using pip
 RUN pip install -r requirements.txt
