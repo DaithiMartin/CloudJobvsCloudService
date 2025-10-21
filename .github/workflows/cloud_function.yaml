@@ -11,6 +11,7 @@ env:
   FUNCTIONS_DIR: ./cloudFunction
   ENTRY_POINT: hello_world
 
+  GAR_LOCATION: us-west1
 # -----------------------------------------------------------------------------
 # Workflow Triggers
 # -----------------------------------------------------------------------------
