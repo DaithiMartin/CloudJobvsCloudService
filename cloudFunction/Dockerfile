@@ -2,8 +2,8 @@
 FROM pdal/pdal:latest AS base
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential gdal-bin libgdal-dev
+#RUN apt-get update && apt-get install -y \
+#    build-essential gdal-bin libgdal-dev
 
 # Create a virtualenv
 RUN python3 -m venv /venv
