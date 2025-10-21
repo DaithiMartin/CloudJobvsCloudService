@@ -87,8 +87,6 @@ idna==3.10
     # via
     #   requests
     #   yarl
-iniconfig==2.1.0
-    # via pytest
 multidict==6.6.4
     # via
     #   aiohttp
@@ -106,15 +104,12 @@ packaging==25.0
     # via
     #   geopandas
     #   pyogrio
-    #   pytest
 pandas==2.3.2
     # via geopandas
 pdal==3.4.5
     # via -r requirements.in
 pdal-piper==0.2.3
     # via -r requirements.in
-pluggy==1.6.0
-    # via pytest
 propcache==0.3.2
     # via
     #   aiohttp
@@ -139,14 +134,10 @@ pyasn1==0.6.1
     #   rsa
 pyasn1-modules==0.4.2
     # via google-auth
-pygments==2.19.2
-    # via pytest
 pyogrio==0.11.1
     # via geopandas
 pyproj==3.7.2
     # via geopandas
-pytest==8.4.2
-    # via -r requirements.in
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2025.2

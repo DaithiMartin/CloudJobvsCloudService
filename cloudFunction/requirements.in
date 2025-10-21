@@ -1,0 +1,7 @@
+pdal-piper
+pdal
+gcsfs
+geopandas
+google-cloud-firestore
+google-cloud-run
+google-cloud-storage
