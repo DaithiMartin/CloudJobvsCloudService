@@ -4,7 +4,7 @@ name: CICD for Cloud Function from Source with artifact registry and compute eng
 # Environment variables
 # -----------------------------------------------------------------------------
 env:
-  SERVICE_NAME: cloud-function
+  JOB_NAME: cloud-function
   REGION: us-west1
   PROJECT_ID: dulcet-equinox-444420-d8
   RUNTIME_SA: 'mldeploy@dulcet-equinox-444420-d8.iam.gserviceaccount.com'
