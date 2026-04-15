@@ -66,9 +66,9 @@ def main():
     print("Starting USGS Network Isolation Test...")
 
     # 1. Create a dummy bounding box (Savannah, GA area from your logs)
-    bbox = box(-81.730504, 32.025507, -81.711515, 32.046881)
+    bbox = (-81.730504, 32.025507, -81.711515, 32.046881)
     gdf = gpd.GeoDataFrame({'geometry': [bbox]}, crs="EPSG:4326")
-    bounds = gdf.total_bounds
+    bounds = tuple(gdf.total_bounds)
 
     # 2. Attempt the network call
     print(f"Requesting 3DEP DEM for bounds: {bounds}")
