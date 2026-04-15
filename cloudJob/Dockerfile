@@ -7,13 +7,18 @@ RUN /venv/bin/pip install --upgrade pip && \
 
 # --- Stage 2: The "Final" Image ---
 FROM python:3.12-slim
+
+# ADDED: Install system-level C dependencies required by rasterio/GDAL
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libexpat1 \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --from=builder /venv /venv
 
 # Set the working directory for the application.
 WORKDIR /app
 
 # Copy your application and shared code INTO the working directory.
-# Python will automatically search for modules here.
 COPY cloudJob/cloudJob/ ./cloudJob/
 COPY src/ ./src/
 
