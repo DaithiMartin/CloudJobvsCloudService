@@ -1,2 +1,6 @@
-
-torch
+seamless_3dep
+rioxarray
+geopandas
+xarray
+aiohttp
+aiohttp-client-cache
